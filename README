@@ -1,0 +1,66 @@
+# Puzzle Solver
+
+## Overview
+
+The Puzzle Solver is a Python module designed to solve and generate logic puzzles represented as 2D grids. Each cell
+ in the grid can be black (0), white (1), or unknown (-1). The solver uses a backtracking approach to fill the grid
+  in accordance with a set of constraints. Constraints specify the number of visible cells from particular locations
+   on the grid.
+
+## Features
+
+- **Solve Puzzles**: Given a set of constraints and a grid size, the solver can find a valid configuration that meets
+ all the constraints.
+- **Count Solutions**: The module can determine the total number of valid solutions for a given puzzle configuration.
+- **Generate Puzzles**: It can generate a set of constraints for a given grid configuration that ensures a unique solution.
+
+## Functions
+
+1. **max_seen_cells(picture, row, col)**
+   - Determines the maximum number of visible cells from a given cell, assuming all unknown cells are white.
+
+2. **min_seen_cells(picture, row, col)**
+   - Determines the minimum number of visible cells from a given cell, assuming all unknown cells are black.
+
+3. **check_lst(possible_vals)**
+   - Checks the list of constraint satisfaction levels and returns an appropriate status.
+
+4. **check_constraints(picture, constraints_set)**
+   - Evaluates how well the current board satisfies the given constraints.
+
+5. **help_solve_puzzle(picture, constraints_set, index_row=0, index_col=0)**
+   - Recursively attempts to solve the puzzle using a backtracking approach.
+
+6. **solve_puzzle(constraints_set, n, m)**
+   - Solves the puzzle for a specified grid size and set of constraints.
+
+7. **helper_count_solutions(picture, constraints_set, row=0, col=0)**
+   - Recursively counts all valid solutions for the puzzle configuration.
+
+8. **how_many_solutions(constraints_set, n, m)**
+   - Returns the total number of valid solutions for a given puzzle configuration.
+
+9. **help_generate_puzzle(s_constraint, n, m)**
+   - Helps generate the minimal set of constraints necessary for a unique puzzle solution.
+
+10. **generate_puzzle(picture)**
+    - Generates a set of constraints for a given grid configuration ensuring a unique solution.
+
+## Usage
+
+To use the puzzle solver, import the functions you need from the module and call them with the appropriate parameters.
+ Below is a basic usage example:
+
+```python
+from puzzle_solver import solve_puzzle
+
+# Define the constraints for the puzzle
+constraints = {(0, 0, 1), (1, 1, 2)}
+
+# Define the grid size
+n, m = 3, 3
+
+# Solve the puzzle
+solution = solve_puzzle(constraints, n, m)
+print("Puzzle Solution:")
+print(solution)
